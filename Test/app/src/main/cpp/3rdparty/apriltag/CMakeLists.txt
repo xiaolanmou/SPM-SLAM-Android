@@ -1,0 +1,6 @@
+aux_source_directory(common COMMON_SRC)
+set(APRILTAG_SRCS apriltag.c apriltag_pose.c apriltag_quad_thresh.c)
+file(GLOB TAG_FILES tag*.c)
+find_package(Threads REQUIRED)
+add_library(apriltag SHARED ${APRILTAG_SRCS} ${COMMON_SRC} ${TAG_FILES})
+target_link_libraries(apriltag PUBLIC Threads::Threads m)
